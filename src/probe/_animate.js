@@ -4,15 +4,14 @@
 			startX = this.x,
 			startY = this.y,
 			startTime = utils.getTime(),
-			destTime = startTime + duration,
-			animationId = Math.random();
+			destTime = startTime + duration;
 
-		function step (animationId) {
+		function step () {
 			var now = utils.getTime(),
 				newX, newY,
 				easing;
 
-			if ( now >= destTime && animationId == that.isAnimating ) {
+			if ( now >= destTime ) {
 				that.isAnimating = false;
 				that._translate(destX, destY);
 				
@@ -29,10 +28,8 @@
 			newY = ( destY - startY ) * easing + startY;
 			that._translate(newX, newY);
 
-			if ( that.isAnimating == animationId ) {
-				rAF(function() {
-					step(animationId)
-				});
+			if ( that.isAnimating ) {
+				rAF(step);
 			}
 
 			if ( that.options.probeType == 3 ) {
@@ -40,6 +37,6 @@
 			}
 		}
 
-		this.isAnimating = animationId;
-		step(animationId);
+		this.isAnimating = true;
+		step();
 	},

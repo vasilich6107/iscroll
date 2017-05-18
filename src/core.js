@@ -393,7 +393,6 @@ IScroll.prototype = {
 	refresh: function () {
 		utils.getRect(this.wrapper);		// Force reflow
 
-		this._execEvent('beforeRefresh');
 		this.wrapperWidth	= this.wrapper.clientWidth;
 		this.wrapperHeight	= this.wrapper.clientHeight;
 
@@ -591,7 +590,6 @@ IScroll.prototype = {
 
 		this.x = x;
 		this.y = y;
-		this._execEvent('scrollMove');
 
 // INSERT POINT: _translate
 

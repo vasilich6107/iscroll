@@ -3,14 +3,7 @@ var rAF = window.requestAnimationFrame	||
 	window.mozRequestAnimationFrame		||
 	window.oRequestAnimationFrame		||
 	window.msRequestAnimationFrame		||
-	function (callback) { return window.setTimeout(callback, 1000 / 60); };
-
-var cAF = window.cancelAnimationFrame	||
-	window.webkitCancelAnimationFrame	||
-	window.mozCancelAnimationFrame		||
-	window.oCancelAnimationFrame		||
-	window.msCancelAnimationFrame		||
-	function (id) { clearTimeout(id); };
+	function (callback) { window.setTimeout(callback, 1000 / 60); };
 
 var utils = (function () {
 	var me = {};
